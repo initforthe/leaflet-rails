@@ -6246,9 +6246,9 @@ L.icon = function (options) {
 L.Icon.Default = L.Icon.extend({
 
 	options: {
-		iconUrl:       '<%= Rails.application.assets.find_asset("marker-icon.png").digest_path %>',
-		iconRetinaUrl: '<%= Rails.application.assets.find_asset("marker-icon-2x.png").digest_path %>',
-		shadowUrl:     '<%= Rails.application.assets.find_asset("marker-shadow.png").digest_path %>',
+		iconUrl:       '<%= asset_path("marker-icon.png") %>',
+		iconRetinaUrl: '<%= asset_path("marker-icon-2x.png") %>',
+		shadowUrl:     '<%= asset_path("marker-shadow.png") %>',
 		iconSize:    [25, 41],
 		iconAnchor:  [12, 41],
 		popupAnchor: [1, -34],
@@ -6275,8 +6275,10 @@ L.Icon.Default = L.Icon.extend({
 
 		document.body.removeChild(el);
 
+		console.log(path);
+
 		return path.indexOf('url') === 0 ?
-			path.replace(/^url\([\"\']?/, '').replace(/marker-icon-<%= Rails.application.assets.find_asset('marker-icon.png').digest %>\.png[\"\']?\)$/, '') : '';
+			path.replace(/^url\([\"\']?/, '').replace(/marker-icon\.png[\"\']?\)$/, '') : '';
 	}
 });
 
@@ -13167,4 +13169,4 @@ L.control.layers = function (baseLayers, overlays, options) {
 
 
 }(window, document));
-//# sourceMappingURL=<%= asset_path 'leaflet-src.map' %>
+// # sourceMappingURL=<%= asset_path 'leaflet-src.map' %>
